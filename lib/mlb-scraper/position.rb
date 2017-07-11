@@ -1,0 +1,2 @@
+class MlbScraper::Position
+end
