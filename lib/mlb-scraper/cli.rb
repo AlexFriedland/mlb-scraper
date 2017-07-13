@@ -6,10 +6,20 @@ class MlbScraper::CLI
   #stub of our interface
 
   def call
-    menu
+    team?
+    menu(team)
   end
 
-  def menu
+  def team
+    puts "Which team would you like to see player info for?"
+    i = 1
+    team_list = []
+    team_url = []
+
+    #iterate
+  end
+
+  def menu(team)
 
     puts "Welcome to the player roster of the New York Metropolitans.
 
@@ -74,7 +84,7 @@ class MlbScraper::CLI
       quit
     else
       puts "Sorry, I don't recognize that input."
-      menu
+      menu(team)
     end
 
     get_player_info?
@@ -90,7 +100,7 @@ class MlbScraper::CLI
     if input == "quit"
       quit
     elsif input == "back"
-      menu
+      menu(team)
     elsif arr.include?(input.to_i)
       MlbScraper::Player.all.each {|player|
         if player.number.to_i == input.to_i
