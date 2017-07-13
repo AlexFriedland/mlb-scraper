@@ -105,9 +105,5 @@ class MlbScraper::Scraper
     outfield
   end
 
-  def self.player_info(url)
-    doc = Nokogiri::HTML(open(url))
-
-  end
 
 end

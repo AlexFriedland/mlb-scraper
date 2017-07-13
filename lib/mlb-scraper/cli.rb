@@ -33,17 +33,7 @@ class MlbScraper::CLI
       "
       MlbScraper::Scraper.pitchers
 
-      MlbScraper::Player.all.each {|player|
-        puts "
-
-        Name: #{player.name}
-        Number: #{player.number}
-        Batting / Throwing: #{player.bt}
-        Height: #{player.height}
-        Weight: #{player.weight}
-        Birthday: #{player.dob}"
-
-      }
+      list_players
 
 
     elsif input == "2"
@@ -53,16 +43,7 @@ class MlbScraper::CLI
 
       MlbScraper::Scraper.catchers
 
-      MlbScraper::Player.all.each {|player|
-        puts "
-
-        Name: #{player.name}
-        Number: #{player.number}
-        Batting / Throwing: #{player.bt}
-        Height: #{player.height}
-        Weight: #{player.weight}
-        Birthday: #{player.dob}"
-      }
+      list_players
 
     elsif input == "3"
       puts "INFIELD OF THE NEW YORK METROPOLITANS:
@@ -70,16 +51,7 @@ class MlbScraper::CLI
       "
       MlbScraper::Scraper.infield
 
-      MlbScraper::Player.all.each {|player|
-        puts "
-
-        Name: #{player.name}
-        Number: #{player.number}
-        Batting / Throwing: #{player.bt}
-        Height: #{player.height}
-        Weight: #{player.weight}
-        Birthday: #{player.dob}"
-      }
+      list_players
 
     elsif input == "4"
       puts "OUTFIELD OF THE NEW YORK METROPOLITANS:
@@ -87,16 +59,7 @@ class MlbScraper::CLI
       "
       MlbScraper::Scraper.outfield
 
-      MlbScraper::Player.all.each {|player|
-        puts "
-
-        Name: #{player.name}
-        Number: #{player.number}
-        Batting / Throwing: #{player.bt}
-        Height: #{player.height}
-        Weight: #{player.weight}
-        Birthday: #{player.dob}"
-      }
+      list_players
 
     elsif input == "5"
       puts "FULL ROSTER OF THE NEW YORK METROPOLITANS
@@ -104,16 +67,7 @@ class MlbScraper::CLI
       "
       MlbScraper::Scraper.full_roster
 
-      MlbScraper::Player.all.each {|player|
-        puts "
-
-        Name: #{player.name}
-        Number: #{player.number}
-        Batting / Throwing: #{player.bt}
-        Height: #{player.height}
-        Weight: #{player.weight}
-        Birthday: #{player.dob}"
-      }
+      list_players
 
 
     elsif input == "exit"
@@ -126,18 +80,24 @@ class MlbScraper::CLI
     get_player_info?
   end
 
+
   def get_player_info?
     p "If you want to see more info on a player, enter their number and press ENTER.  Otherwise, if you want to go back, type 'back'.  Or, just type 'quit'"
 
-    input = gets.chomp
+    input = gets.strip
+    arr = (0..100).to_a
 
     if input == "quit"
       quit
     elsif input == "back"
-        menu
-    elsif input == x #player number
-      #find player by number
-      #drill down
+      menu
+    elsif arr.include?(input.to_i)
+      MlbScraper::Player.all.each {|player|
+        if player.number.to_i == input.to_i
+          MlbScraper::Player.player_info(player.url)
+          get_player_info?
+        end
+      }
     else
           p "I don't recognize that player's number!"
           get_player_info?
@@ -147,6 +107,20 @@ class MlbScraper::CLI
 
   def quit
     abort("See you soon!")
+  end
+
+
+  def list_players
+    MlbScraper::Player.all.each {|player|
+      puts "
+      Name: #{player.name}
+      Number: #{player.number}
+      Batting / Throwing: #{player.bt}
+      Height: #{player.height}
+      Weight: #{player.weight}
+      Birthday: #{player.dob}
+      "
+    }
   end
 
 
