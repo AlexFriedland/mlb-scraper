@@ -6,7 +6,7 @@ class MlbScraper::CLI
   #stub of our interface
 
   def call
-    team?
+    team
     menu(team)
   end
 
@@ -14,7 +14,39 @@ class MlbScraper::CLI
     puts "Which team would you like to see player info for?"
     i = 1
     team_list = []
-    team_url = []
+
+    orioles = ["http://m.orioles.mlb.com/roster/"]
+    redsox = ["http://m.redsox.mlb.com/roster/"]
+    whitesox = ["http://m.whitexox.mlb.com/roster/"]
+    indians = ["http://m.indians.mlb.com/roster/"]
+    tigers = ["http://m.tigers.mlb.com/roster/"]
+    astros = ["http://m.astros.mlb.com/roster/"]
+    royals = ["http://m.royals.mlb.com/roster/"]
+    angels = ["http://m.angels.mlb.com/roster/"]
+    twins = ["http://m.twins.mlb.com/roster/"]
+    yankees = ["http://m.tigers.mlb.com/roster/"]
+    athletics = ["http://m.athletics.mlb.com/roster/"]
+    mariners = ["http://m.mariners.mlb.com/roster/"]
+    rays = ["http://m.rays.mlb.com/roster/"]
+    rangers = ["http://m.rangers.mlb.com/roster/"]
+    bluejays = ["http://m.bluejays.mlb.com/roster/"]
+    dbacks = ["http://m.dbacks.mlb.com/roster/"]
+    braves = ["http://m.braves.mlb.com/roster/"]
+    cubs = ["http://m.cubs.mlb.com/roster/"]
+    reds = ["http://m.reds.mlb.com/roster/"]
+    rockies = ["http://m.rockies.mlb.com/roster/"]
+    dodgers = ["http://m.dodgers.mlb.com/roster/"]
+    marlins = ["http://m.marlins.mlb.com/roster/"]
+    brewers = ["http://m.brewers.mlb.com/roster/"]
+    mets = ["http://m.mets.mlb.com/roster/"]
+    phillies = ["http://m.phillies.mlb.com/roster/"]
+    pirates = ["http://m.pirates.mlb.com/roster/"]
+    padres = ["http://m.padres.mlb.com/roster/"]
+    giants = ["http://m.giants.mlb.com/roster/"]
+    cardinals = ["http://m.cardinals.mlb.com/roster/"]
+    nats = ["http://m.nats.mlb.com/roster/"]
+
+
 
     #iterate
   end
