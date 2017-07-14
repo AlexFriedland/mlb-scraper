@@ -11,9 +11,25 @@ class MlbScraper::CLI
   end
 
   def team
+
+    #display list of teams
+    puts "
+    1. orioles
+    2. redsox
+    3. whitesox
+    4. indians
+    5. tigers
+    6. astros
+    7. "
+    #get input
+    #pass to scraper
+
+
     puts "Which team would you like to see player info for?"
     i = 1
-    team_list = []
+    team_list = [[orioles = ["orioles","http://m.orioles.mlb.com/roster/"], ]
+
+    ]
 
     orioles = ["http://m.orioles.mlb.com/roster/"]
     redsox = ["http://m.redsox.mlb.com/roster/"]
