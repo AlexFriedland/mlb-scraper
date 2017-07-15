@@ -63,7 +63,7 @@ class MlbScraper::CLI
     input = gets.strip
 
     MlbScraper::Team.all.each {|team|
-      if input.downcase == team.name.downcase || input.to_i == team.number
+      if team.name.downcase == input.downcase || team.number == input.to_i
         MlbScraper::Scraper.new(team.url)
         binding.pry
         #instantiate scraper with team url
