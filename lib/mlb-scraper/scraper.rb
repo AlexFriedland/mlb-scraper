@@ -2,8 +2,14 @@ require 'pry'
 
 class MlbScraper::Scraper
 
+  attr_accessor :url
+
+  def initialize(url)
+    @url = url
+  end
+
   def self.get_page
-    Nokogiri::HTML(open("http://m.mets.mlb.com/roster/"))
+    Nokogiri::HTML(open(url))
   end
 
   def self.get_players

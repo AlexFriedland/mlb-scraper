@@ -66,18 +66,22 @@ class MlbScraper::CLI
 
     MlbScraper::Team.all.each {|team|
       if input == team.name || input.to_i == team.number
-        menu(input)
+        #pass the team selection
+        MlbScraper::Scraper.new(team.url)
+        binding.pry
+        menu
       else
         puts "I don't recognize that input!"
         make_teams
       end
     }
     #iterate
+
   end
 
-  def menu(team)
+  def menu
 
-    puts "Welcome to the player roster of the New York Metropolitans.
+    puts "Welcome to the player roster of the TEAM NAME
 
     Which position would you like to view?
 
@@ -94,7 +98,7 @@ class MlbScraper::CLI
 
 
     if input == "1"
-      puts "PITCHERS OF THE NEW YORK METROPOLITANS
+      puts "PITCHERS:
 
       "
       MlbScraper::Scraper.pitchers
@@ -103,7 +107,7 @@ class MlbScraper::CLI
 
 
     elsif input == "2"
-      puts "CATCHERS OF THE NEW YORK METROPOLITANS:
+      puts "CATCHERS:
 
       "
 
@@ -112,7 +116,7 @@ class MlbScraper::CLI
       list_players
 
     elsif input == "3"
-      puts "INFIELD OF THE NEW YORK METROPOLITANS:
+      puts "INFIELD:
 
       "
       MlbScraper::Scraper.infield
@@ -120,7 +124,7 @@ class MlbScraper::CLI
       list_players
 
     elsif input == "4"
-      puts "OUTFIELD OF THE NEW YORK METROPOLITANS:
+      puts "OUTFIELD:
 
       "
       MlbScraper::Scraper.outfield
@@ -128,7 +132,7 @@ class MlbScraper::CLI
       list_players
 
     elsif input == "5"
-      puts "FULL ROSTER OF THE NEW YORK METROPOLITANS
+      puts "FULL ROSTER:
 
       "
       MlbScraper::Scraper.full_roster
