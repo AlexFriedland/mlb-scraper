@@ -7,7 +7,6 @@ class MlbScraper::CLI
 
   def call
     team
-    menu(team)
   end
 
   def team
@@ -49,7 +48,8 @@ class MlbScraper::CLI
     #display list of teams
     x = 1
     team_list.each {|team|
-      puts "#{x}. #{team[0]}"
+      puts "#{x}. #{team[0].capitalize}"
+      x += 1
     }
     #get input
     #pass to scraper
