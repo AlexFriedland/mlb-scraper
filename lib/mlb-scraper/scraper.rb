@@ -9,7 +9,7 @@ class MlbScraper::Scraper
   end
 
   def self.get_page
-    Nokogiri::HTML(open(url))
+    Nokogiri::HTML(open(MlbScraper::Team.url))
   end
 
   def self.get_players

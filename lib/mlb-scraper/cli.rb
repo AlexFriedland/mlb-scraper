@@ -68,6 +68,7 @@ class MlbScraper::CLI
       if input == team.name || input.to_i == team.number
         #pass the team selection
         MlbScraper::Scraper.new(team.url)
+        binding.pry
         menu
       else
         puts "I don't recognize that input!"
