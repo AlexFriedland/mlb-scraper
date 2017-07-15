@@ -53,20 +53,25 @@ class MlbScraper::CLI
       number = x
       url = team[1]
       MlbScraper::Team.new(name, number, url)
-      binding.pry
+
       x += 1
     }
-    #get input
-    #pass to scraper
+    make_teams
+  end
 
-
-    puts "Which team would you like to see player info for? Enter the number, or team name, and press enter."
+  def make_teams
+    puts "Which team would you like to see player info for? Enter the number, or team name (as shown above), and press enter."
 
     input = gets.strip
 
-
-
-
+    MlbScraper::Team.all.each {|team|
+      if input == team.name || input.to_i == team.number
+        menu(input)
+      else
+        puts "I don't recognize that input!"
+        make_teams
+      end
+    }
     #iterate
   end
 
