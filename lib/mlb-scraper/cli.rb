@@ -12,16 +12,6 @@ class MlbScraper::CLI
 
   def team
 
-    #display list of teams
-    puts ""
-    #get input
-    #pass to scraper
-
-
-    puts "Which team would you like to see player info for?"
-    i = 1
-
-
     team_list = [
       orioles = ["orioles", "http://m.orioles.mlb.com/roster/"],
       redsox = ["redsox", "http://m.redsox.mlb.com/roster/"],
@@ -55,6 +45,17 @@ class MlbScraper::CLI
       nats = ["nats", "http://m.nats.mlb.com/roster/"]
     ]
 
+
+    #display list of teams
+    x = 1
+    team_list.each {|team|
+      puts "#{x}. #{team[0]}"
+    }
+    #get input
+    #pass to scraper
+
+
+    puts "Which team would you like to see player info for?"
 
     #iterate
   end
