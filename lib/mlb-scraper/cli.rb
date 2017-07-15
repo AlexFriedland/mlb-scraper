@@ -65,7 +65,7 @@ class MlbScraper::CLI
     input = gets.strip
 
     MlbScraper::Team.all.each {|team|
-      if input == team.name || input.to_i == team.number
+      if input.downcase == team.name.downcase || input.to_i == team.number
         #pass the team selection
         MlbScraper::Scraper.new(team.url)
         binding.pry
