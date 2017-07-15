@@ -68,7 +68,6 @@ class MlbScraper::CLI
       if input == team.name || input.to_i == team.number
         #pass the team selection
         MlbScraper::Scraper.new(team.url)
-        binding.pry
         menu
       else
         puts "I don't recognize that input!"
@@ -81,7 +80,7 @@ class MlbScraper::CLI
 
   def menu
 
-    puts "Welcome to the player roster of the TEAM NAME
+    puts "Welcome to the player roster of the #{MlbScraper::Team.name}!
 
     Which position would you like to view?
 
@@ -144,7 +143,7 @@ class MlbScraper::CLI
       quit
     else
       puts "Sorry, I don't recognize that input."
-      menu(team)
+      menu
     end
 
     get_player_info?
@@ -160,7 +159,7 @@ class MlbScraper::CLI
     if input == "quit"
       quit
     elsif input == "back"
-      menu(team)
+      menu
     elsif arr.include?(input.to_i)
       MlbScraper::Player.all.each {|player|
         if player.number.to_i == input.to_i
