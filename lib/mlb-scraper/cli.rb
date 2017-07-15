@@ -49,13 +49,23 @@ class MlbScraper::CLI
     x = 1
     team_list.each {|team|
       puts "#{x}. #{team[0].capitalize}"
+      name = team[0].capitalize
+      number = x
+      url = team[1]
+      MlbScraper::Team.new(name, number, url)
+      binding.pry
       x += 1
     }
     #get input
     #pass to scraper
 
 
-    puts "Which team would you like to see player info for?"
+    puts "Which team would you like to see player info for? Enter the number, or team name, and press enter."
+
+    input = gets.strip
+
+
+
 
     #iterate
   end
