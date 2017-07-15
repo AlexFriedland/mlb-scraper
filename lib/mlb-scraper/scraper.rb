@@ -8,8 +8,8 @@ class MlbScraper::Scraper
     @url = url
   end
 
-  def self.get_page
-    Nokogiri::HTML(open(MlbScraper::Team.url))
+  def self.get_page(url)
+    Nokogiri::HTML(open(url))
   end
 
   def self.get_players

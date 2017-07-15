@@ -1,9 +1,7 @@
-#CLI controller - user interaction. welcome, input etc.
 require 'pry'
 
 class MlbScraper::CLI
 
-  #stub of our interface
 
   def call
     team
@@ -66,9 +64,10 @@ class MlbScraper::CLI
 
     MlbScraper::Team.all.each {|team|
       if input.downcase == team.name.downcase || input.to_i == team.number
-        #pass the team selection
         MlbScraper::Scraper.new(team.url)
         binding.pry
+        #instantiate scraper with team url
+        #pass the team selection
         menu
       else
         puts "I don't recognize that input!"
