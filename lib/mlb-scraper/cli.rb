@@ -13,55 +13,47 @@ class MlbScraper::CLI
   def team
 
     #display list of teams
-    puts "
-    1. orioles
-    2. redsox
-    3. whitesox
-    4. indians
-    5. tigers
-    6. astros
-    7. "
+    puts ""
     #get input
     #pass to scraper
 
 
     puts "Which team would you like to see player info for?"
     i = 1
-    team_list = [[orioles = ["orioles","http://m.orioles.mlb.com/roster/"], ]
 
+
+    team_list = [
+      orioles = ["orioles", "http://m.orioles.mlb.com/roster/"],
+      redsox = ["redsox", "http://m.redsox.mlb.com/roster/"],
+      whitesox = ["whitesox", "http://m.whitexox.mlb.com/roster/"],
+      indians = ["indians", "http://m.indians.mlb.com/roster/"],
+      tigers = ["tigers", "http://m.tigers.mlb.com/roster/"],
+      astros = ["astros", "http://m.astros.mlb.com/roster/"],
+      royals = ["royals", "http://m.royals.mlb.com/roster/"],
+      angels = ["angels", "http://m.angels.mlb.com/roster/"],
+      twins = ["twins", "http://m.twins.mlb.com/roster/"],
+      yankees = ["yankees", "http://m.tigers.mlb.com/roster/"],
+      athletics = ["athletics", "http://m.athletics.mlb.com/roster/"],
+      mariners = ["mariners", "http://m.mariners.mlb.com/roster/"],
+      rays = ["rays", "http://m.rays.mlb.com/roster/"],
+      rangers = ["rangers", "http://m.rangers.mlb.com/roster/"],
+      bluejays = ["bluejays", "http://m.bluejays.mlb.com/roster/"],
+      dbacks = ["dbacks", "http://m.dbacks.mlb.com/roster/"],
+      braves = ["braves", "http://m.braves.mlb.com/roster/"],
+      cubs = ["cubs", "http://m.cubs.mlb.com/roster/"],
+      reds = ["reds", "http://m.reds.mlb.com/roster/"],
+      rockies = ["rockies", "http://m.rockies.mlb.com/roster/"],
+      dodgers = ["dodgers", "http://m.dodgers.mlb.com/roster/"],
+      marlins = ["marlins", "http://m.marlins.mlb.com/roster/"],
+      brewers = ["brewers", "http://m.brewers.mlb.com/roster/"],
+      mets = ["mets", "http://m.mets.mlb.com/roster/"],
+      phillies = ["phillies", "http://m.phillies.mlb.com/roster/"],
+      pirates = ["pirates", "http://m.pirates.mlb.com/roster/"],
+      padres = ["padres", "http://m.padres.mlb.com/roster/"],
+      giants = ["giants", "http://m.giants.mlb.com/roster/"],
+      cardinals = ["cardinals", "http://m.cardinals.mlb.com/roster/"],
+      nats = ["nats", "http://m.nats.mlb.com/roster/"]
     ]
-
-    orioles = ["http://m.orioles.mlb.com/roster/"]
-    redsox = ["http://m.redsox.mlb.com/roster/"]
-    whitesox = ["http://m.whitexox.mlb.com/roster/"]
-    indians = ["http://m.indians.mlb.com/roster/"]
-    tigers = ["http://m.tigers.mlb.com/roster/"]
-    astros = ["http://m.astros.mlb.com/roster/"]
-    royals = ["http://m.royals.mlb.com/roster/"]
-    angels = ["http://m.angels.mlb.com/roster/"]
-    twins = ["http://m.twins.mlb.com/roster/"]
-    yankees = ["http://m.tigers.mlb.com/roster/"]
-    athletics = ["http://m.athletics.mlb.com/roster/"]
-    mariners = ["http://m.mariners.mlb.com/roster/"]
-    rays = ["http://m.rays.mlb.com/roster/"]
-    rangers = ["http://m.rangers.mlb.com/roster/"]
-    bluejays = ["http://m.bluejays.mlb.com/roster/"]
-    dbacks = ["http://m.dbacks.mlb.com/roster/"]
-    braves = ["http://m.braves.mlb.com/roster/"]
-    cubs = ["http://m.cubs.mlb.com/roster/"]
-    reds = ["http://m.reds.mlb.com/roster/"]
-    rockies = ["http://m.rockies.mlb.com/roster/"]
-    dodgers = ["http://m.dodgers.mlb.com/roster/"]
-    marlins = ["http://m.marlins.mlb.com/roster/"]
-    brewers = ["http://m.brewers.mlb.com/roster/"]
-    mets = ["http://m.mets.mlb.com/roster/"]
-    phillies = ["http://m.phillies.mlb.com/roster/"]
-    pirates = ["http://m.pirates.mlb.com/roster/"]
-    padres = ["http://m.padres.mlb.com/roster/"]
-    giants = ["http://m.giants.mlb.com/roster/"]
-    cardinals = ["http://m.cardinals.mlb.com/roster/"]
-    nats = ["http://m.nats.mlb.com/roster/"]
-
 
 
     #iterate
