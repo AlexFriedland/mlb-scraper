@@ -80,7 +80,7 @@ class MlbScraper::CLI
 
   def menu
 
-    puts "Welcome to the player roster of the #{MlbScraper::Team.name}!
+    puts "
 
     Which position would you like to view?
 

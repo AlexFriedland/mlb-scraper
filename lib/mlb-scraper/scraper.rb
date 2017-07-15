@@ -13,7 +13,7 @@ class MlbScraper::Scraper
   end
 
   def self.get_players
-    self.get_page.css("section.module")
+    self.get_page(url).css("section.module")
   end
 
 
