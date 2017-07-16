@@ -69,12 +69,9 @@ class MlbScraper::CLI
         #instantiate scraper with team url
         #pass the team selection
         menu
-      else
-        puts "I don't recognize that input!"
-        make_teams
       end
+
     }
-    #iterate
 
   end
 
