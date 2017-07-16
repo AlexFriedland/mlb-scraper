@@ -2,6 +2,7 @@ require 'pry'
 
 class MlbScraper::CLI
 
+  $url = nil
 
   def call
     team
@@ -42,7 +43,7 @@ class MlbScraper::CLI
       nats = ["nats", "http://m.nats.mlb.com/roster/"]
     ]
 
-
+    
     #display list of teams
     x = 1
     team_list.each {|team|
@@ -62,6 +63,10 @@ class MlbScraper::CLI
 
     input = gets.strip
 
+
+
+
+
     MlbScraper::Team.all.each {|team|
       if input.downcase == team.name.downcase || input.to_i == team.number
         MlbScraper::Scraper.new(team.url)
@@ -70,9 +75,7 @@ class MlbScraper::CLI
         #pass the team selection
         menu
       end
-
     }
-
   end
 
   def menu
