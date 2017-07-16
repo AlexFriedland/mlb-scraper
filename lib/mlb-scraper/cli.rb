@@ -63,9 +63,9 @@ class MlbScraper::CLI
     input = gets.strip
 
     MlbScraper::Team.all.each {|team|
-      if team.name.downcase == input.downcase || team.number == input.to_i
+      if input.downcase == team.name.downcase || input.to_i == team.number
         MlbScraper::Scraper.new(team.url)
-        binding.pry
+        $url = team.url
         #instantiate scraper with team url
         #pass the team selection
         menu
@@ -100,7 +100,7 @@ class MlbScraper::CLI
       puts "PITCHERS:
 
       "
-      MlbScraper::Scraper.pitchers
+      MlbScraper::Scraper.pitchers($url)
 
       list_players
 
@@ -110,7 +110,7 @@ class MlbScraper::CLI
 
       "
 
-      MlbScraper::Scraper.catchers
+      MlbScraper::Scraper.catchers($url)
 
       list_players
 
@@ -118,7 +118,7 @@ class MlbScraper::CLI
       puts "INFIELD:
 
       "
-      MlbScraper::Scraper.infield
+      MlbScraper::Scraper.infield($url)
 
       list_players
 
@@ -126,7 +126,7 @@ class MlbScraper::CLI
       puts "OUTFIELD:
 
       "
-      MlbScraper::Scraper.outfield
+      MlbScraper::Scraper.outfield($url)
 
       list_players
 
@@ -134,7 +134,7 @@ class MlbScraper::CLI
       puts "FULL ROSTER:
 
       "
-      MlbScraper::Scraper.full_roster
+      MlbScraper::Scraper.full_roster($url)
 
       list_players
 

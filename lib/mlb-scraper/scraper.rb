@@ -12,13 +12,13 @@ class MlbScraper::Scraper
     Nokogiri::HTML(open(url))
   end
 
-  def self.get_players
+  def self.get_players(url)
     self.get_page(url).css("section.module")
   end
 
 
-  def self.pitchers
-    self.get_players.each {|section|
+  def self.pitchers(url)
+    self.get_players(url).each {|section|
       if section.css("h4").text == "Pitchers"
         players = section.css("tr")
 
@@ -42,8 +42,8 @@ class MlbScraper::Scraper
 
 
 
-  def self.catchers
-    self.get_players.each {|section|
+  def self.catchers(url)
+    self.get_players(url).each {|section|
       if section.css("h4").text == "Catchers"
         players = section.css("tr")
 
@@ -62,8 +62,8 @@ class MlbScraper::Scraper
 
   end
 
-  def self.infield
-    self.get_players.each {|section|
+  def self.infield(url)
+    self.get_players(url).each {|section|
       if section.css("h4").text == "Infield"
         players = section.css("tr")
 
@@ -83,8 +83,8 @@ class MlbScraper::Scraper
 
   end
 
-  def self.outfield
-    self.get_players.each {|section|
+  def self.outfield(url)
+    self.get_players(url).each {|section|
       if section.css("h4").text == "Outfield"
         players = section.css("tr")
 
@@ -104,11 +104,11 @@ class MlbScraper::Scraper
 
   end
 
-  def self.full_roster
-    pitchers
-    catchers
-    infield
-    outfield
+  def self.full_roster(url)
+    pitchers(url)
+    catchers(url)
+    infield(url)
+    outfield(url)
   end
 
 
