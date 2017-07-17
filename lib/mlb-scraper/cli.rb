@@ -143,7 +143,7 @@ class MlbScraper::CLI
       list_players
 
     elsif input == "5"
-      puts "FULL ROSTER:
+      puts "FULL PLAYER ROSTER ROSTER:
 
       "
       MlbScraper::Scraper.full_roster($url)
@@ -193,18 +193,16 @@ class MlbScraper::CLI
 
   def list_players
     MlbScraper::Player.all.each {|player|
-      puts "
-      Name: #{player.name}
-      Number: #{player.number}
-      Batting / Throwing: #{player.bt}
-      Height: #{player.height}
-      Weight: #{player.weight}
-      Birthday: #{player.dob}
-      "
+      unless player.name == ""
+        puts "
+        Name: #{player.name}
+        Number: #{player.number}
+        Batting / Throwing: #{player.bt}
+        Height: #{player.height}
+        Weight: #{player.weight}
+        Birthday: #{player.dob}
+        "
+      end
     }
   end
-
-
-
-
 end

@@ -12,7 +12,6 @@ class MlbScraper::Player
     @weight = weight
     @dob = dob
     @url = url
-
     @pro = pro
     @debut = debut
     @college = college
