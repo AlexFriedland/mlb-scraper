@@ -62,18 +62,23 @@ class MlbScraper::CLI
     input = gets.strip
 
     #if input is between 1-32 OR matches the names of the teams? = true
-    if input.to_i.between?(1,30) || check_team_name
-      verify
+    if input.to_i.between?(1,30) || check_team_name(input)
+      verify(input)
     else
-    make_teams
+      puts "I don't recognize that team, please try again.  Enter the name or number of the team and press enter."
+      make_teams
     end
   end
 
-  def check_team_name
-
+  def check_team_name(input)
+    @@team.list.each {|team|
+      team.each {|name|
+        input.downcase == name.downcase ? true : false
+      }
+    }
   end
 
-  def verify
+  def verify(input)
     MlbScraper::Team.all.each {|team|
       if input.downcase == team.name.downcase || input.to_i == team.number
         MlbScraper::Scraper.new(team.url)
