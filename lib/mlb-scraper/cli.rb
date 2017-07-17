@@ -71,7 +71,7 @@ class MlbScraper::CLI
   end
 
   def check_team_name(input)
-    @@team.list.each {|team|
+    @@team_list.each {|team|
       team.each {|name|
         input.downcase == name.downcase ? true : false
       }
