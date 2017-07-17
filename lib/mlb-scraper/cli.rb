@@ -2,6 +2,39 @@ require 'pry'
 
 class MlbScraper::CLI
 
+  @@team_list = [
+    orioles = ["orioles", "http://m.orioles.mlb.com/roster/"],
+    redsox = ["redsox", "http://m.redsox.mlb.com/roster/"],
+    whitesox = ["whitesox", "http://m.whitexox.mlb.com/roster/"],
+    indians = ["indians", "http://m.indians.mlb.com/roster/"],
+    tigers = ["tigers", "http://m.tigers.mlb.com/roster/"],
+    astros = ["astros", "http://m.astros.mlb.com/roster/"],
+    royals = ["royals", "http://m.royals.mlb.com/roster/"],
+    angels = ["angels", "http://m.angels.mlb.com/roster/"],
+    twins = ["twins", "http://m.twins.mlb.com/roster/"],
+    yankees = ["yankees", "http://m.tigers.mlb.com/roster/"],
+    athletics = ["athletics", "http://m.athletics.mlb.com/roster/"],
+    mariners = ["mariners", "http://m.mariners.mlb.com/roster/"],
+    rays = ["rays", "http://m.rays.mlb.com/roster/"],
+    rangers = ["rangers", "http://m.rangers.mlb.com/roster/"],
+    bluejays = ["bluejays", "http://m.bluejays.mlb.com/roster/"],
+    dbacks = ["dbacks", "http://m.dbacks.mlb.com/roster/"],
+    braves = ["braves", "http://m.braves.mlb.com/roster/"],
+    cubs = ["cubs", "http://m.cubs.mlb.com/roster/"],
+    reds = ["reds", "http://m.reds.mlb.com/roster/"],
+    rockies = ["rockies", "http://m.rockies.mlb.com/roster/"],
+    dodgers = ["dodgers", "http://m.dodgers.mlb.com/roster/"],
+    marlins = ["marlins", "http://m.marlins.mlb.com/roster/"],
+    brewers = ["brewers", "http://m.brewers.mlb.com/roster/"],
+    mets = ["mets", "http://m.mets.mlb.com/roster/"],
+    phillies = ["phillies", "http://m.phillies.mlb.com/roster/"],
+    pirates = ["pirates", "http://m.pirates.mlb.com/roster/"],
+    padres = ["padres", "http://m.padres.mlb.com/roster/"],
+    giants = ["giants", "http://m.giants.mlb.com/roster/"],
+    cardinals = ["cardinals", "http://m.cardinals.mlb.com/roster/"],
+    nats = ["nats", "http://m.nats.mlb.com/roster/"]
+  ]
+
   $url = nil
 
   def call
@@ -9,44 +42,9 @@ class MlbScraper::CLI
   end
 
   def team
-
-    team_list = [
-      orioles = ["orioles", "http://m.orioles.mlb.com/roster/"],
-      redsox = ["redsox", "http://m.redsox.mlb.com/roster/"],
-      whitesox = ["whitesox", "http://m.whitexox.mlb.com/roster/"],
-      indians = ["indians", "http://m.indians.mlb.com/roster/"],
-      tigers = ["tigers", "http://m.tigers.mlb.com/roster/"],
-      astros = ["astros", "http://m.astros.mlb.com/roster/"],
-      royals = ["royals", "http://m.royals.mlb.com/roster/"],
-      angels = ["angels", "http://m.angels.mlb.com/roster/"],
-      twins = ["twins", "http://m.twins.mlb.com/roster/"],
-      yankees = ["yankees", "http://m.tigers.mlb.com/roster/"],
-      athletics = ["athletics", "http://m.athletics.mlb.com/roster/"],
-      mariners = ["mariners", "http://m.mariners.mlb.com/roster/"],
-      rays = ["rays", "http://m.rays.mlb.com/roster/"],
-      rangers = ["rangers", "http://m.rangers.mlb.com/roster/"],
-      bluejays = ["bluejays", "http://m.bluejays.mlb.com/roster/"],
-      dbacks = ["dbacks", "http://m.dbacks.mlb.com/roster/"],
-      braves = ["braves", "http://m.braves.mlb.com/roster/"],
-      cubs = ["cubs", "http://m.cubs.mlb.com/roster/"],
-      reds = ["reds", "http://m.reds.mlb.com/roster/"],
-      rockies = ["rockies", "http://m.rockies.mlb.com/roster/"],
-      dodgers = ["dodgers", "http://m.dodgers.mlb.com/roster/"],
-      marlins = ["marlins", "http://m.marlins.mlb.com/roster/"],
-      brewers = ["brewers", "http://m.brewers.mlb.com/roster/"],
-      mets = ["mets", "http://m.mets.mlb.com/roster/"],
-      phillies = ["phillies", "http://m.phillies.mlb.com/roster/"],
-      pirates = ["pirates", "http://m.pirates.mlb.com/roster/"],
-      padres = ["padres", "http://m.padres.mlb.com/roster/"],
-      giants = ["giants", "http://m.giants.mlb.com/roster/"],
-      cardinals = ["cardinals", "http://m.cardinals.mlb.com/roster/"],
-      nats = ["nats", "http://m.nats.mlb.com/roster/"]
-    ]
-
-    
     #display list of teams
     x = 1
-    team_list.each {|team|
+    @@team_list.each {|team|
       puts "#{x}. #{team[0].capitalize}"
       name = team[0].capitalize
       number = x
@@ -63,10 +61,19 @@ class MlbScraper::CLI
 
     input = gets.strip
 
+    #if input is between 1-32 OR matches the names of the teams? = true
+    if input.to_i.between?(1,30) || check_team_name
+      verify
+    else
+    make_teams
+    end
+  end
 
+  def check_team_name
 
+  end
 
-
+  def verify
     MlbScraper::Team.all.each {|team|
       if input.downcase == team.name.downcase || input.to_i == team.number
         MlbScraper::Scraper.new(team.url)
