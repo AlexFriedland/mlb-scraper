@@ -1,7 +1,6 @@
 #environment file that loads dependencies
 
 module MlbScraper
-
 end
 
 require 'nokogiri'
