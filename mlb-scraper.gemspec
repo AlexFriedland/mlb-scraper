@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'mlb-scraper'
-  s.version     = '0.0.1'
+  s.version     = '1.0.0'
   s.date        = '2017-7-10'
   s.summary     = "A humble scraper to pull the roster info of any MLB team"
   s.description = "A simple sports gem"
