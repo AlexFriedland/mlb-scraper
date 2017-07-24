@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'mlb-scraper'
   s.version     = '1.0.0'
-  s.date        = '2017-7-10'
+  s.date        = %q{2017-07-23}
   s.summary     = "A humble scraper to pull the roster info of any MLB team"
   s.description = "A simple sports gem"
   s.authors     = ["Alexander Friedland"]
@@ -9,5 +9,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/mlb-scraper.rb", "lib/mlb-scraper/cli.rb", "lib/mlb-scraper/player.rb", "lib/mlb-scraper/position.rb", "lib/mlb-scraper/scraper.rb"]
   s.homepage    =
     'http://rubygems.org/gems/hola' #FIX THIS
-  s.license       = 'Flatiron School'
+  s.license       = 'Nonstandard'
 end
