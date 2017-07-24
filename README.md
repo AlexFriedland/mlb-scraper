@@ -6,19 +6,20 @@ Installation
 
 Add this line to your application's Gemfile:
 
-gem 'mlb_scraper'
+gem 'mlb-scraper'
 
 And then execute:
 
 $ bundle
 Or install it yourself as:
 
-$ gem install mlb_scraper
+$ gem install mlb-scraper
+
 Usage
 
 Type the below and follow the on screen prompts
 
-mlb_scraper
+mlb-scraper
 
 Development
 
