@@ -1,4 +1,4 @@
-GlassdoorScraper
+MajorLeagueBaseball Scraper
 
 The MLB Scraper gets player info for all 30 Major League Baseball teams.
 
