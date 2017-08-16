@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/mlb-scraper'
+#require '/home/professionalxmaz/code/labs/mlb-scraper/lib/mlb-scraper'
+require_relative '../lib/mlb-scraper'
 
-MlbScraper::CLI.new.call 
+MlbScraper::CLI.new.call

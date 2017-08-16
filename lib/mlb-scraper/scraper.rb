@@ -111,5 +111,26 @@ class MlbScraper::Scraper
     outfield(url)
   end
 
+  def self.player_info(url)
+
+    doc = Nokogiri::HTML(open(url))
+
+    pro = doc.search("div.player-bio ul li")
+
+    pro.each {|item|
+      puts item.text unless item.text.include?("Follow")
+    }
+
+    puts "To see more info on this player, please visit #{url}"
+
+    #stats_header = doc.search("div.player-stats-summary-large table thead tr")
+    #stats_header.each {|x| puts "   #{x.text}   "}
+    #binding.pry
+
+    #stats = doc.search("div.player-stats-summary-large table tbody tr").text
+    #stats.each {|tr| puts "   #{tr}   ".chomp}
+    #scrape and add the new values to attributes
+  end
+
 
 end

@@ -1,6 +1,7 @@
 require 'pry'
 
 class MlbScraper::CLI
+  @@current_team = nil
 
   @@team_list = [
     orioles = ["orioles", "http://m.orioles.mlb.com/roster/"],
@@ -35,23 +36,21 @@ class MlbScraper::CLI
     nats = ["nats", "http://m.nats.mlb.com/roster/"]
   ]
 
-  $url = nil
-
   def call
     team
   end
 
   def team
     #display list of teams
-    x = 1
-    @@team_list.each {|team|
-      puts "#{x}. #{team[0].capitalize}"
+
+    @@team_list.each.with_index(1) {|team, index|
+      puts "#{index}. #{team[0].capitalize}"
       name = team[0].capitalize
-      number = x
+      number = index
       url = team[1]
       MlbScraper::Team.new(name, number, url)
 
-      x += 1
+
     }
     make_teams
   end
@@ -82,7 +81,7 @@ class MlbScraper::CLI
     MlbScraper::Team.all.each {|team|
       if input.downcase == team.name.downcase || input.to_i == team.number
         MlbScraper::Scraper.new(team.url)
-        $url = team.url
+        @@current_team = team
         #instantiate scraper with team url
         #pass the team selection
         menu
@@ -112,7 +111,7 @@ class MlbScraper::CLI
       puts "PITCHERS:
 
       "
-      MlbScraper::Scraper.pitchers($url)
+      MlbScraper::Scraper.pitchers(@@current_team.url)
 
       list_players
 
@@ -122,7 +121,7 @@ class MlbScraper::CLI
 
       "
 
-      MlbScraper::Scraper.catchers($url)
+      MlbScraper::Scraper.catchers(@@current_team.url)
 
       list_players
 
@@ -130,7 +129,7 @@ class MlbScraper::CLI
       puts "INFIELD:
 
       "
-      MlbScraper::Scraper.infield($url)
+      MlbScraper::Scraper.infield(@@current_team.url)
 
       list_players
 
@@ -138,7 +137,7 @@ class MlbScraper::CLI
       puts "OUTFIELD:
 
       "
-      MlbScraper::Scraper.outfield($url)
+      MlbScraper::Scraper.outfield(@@current_team.url)
 
       list_players
 
@@ -146,7 +145,7 @@ class MlbScraper::CLI
       puts "FULL PLAYER ROSTER ROSTER:
 
       "
-      MlbScraper::Scraper.full_roster($url)
+      MlbScraper::Scraper.full_roster(@@current_team.url)
 
       list_players
 
@@ -166,22 +165,17 @@ class MlbScraper::CLI
     p "If you want to see more info on a player, enter their number and press ENTER.  Otherwise, if you want to go back, type 'back'.  Or, just type 'quit'"
 
     input = gets.strip
-    arr = (0..100).to_a
+    player = MlbScraper::Player.find_by_number(input)
 
     if input == "quit"
       quit
     elsif input == "back"
       menu
-    elsif arr.include?(input.to_i)
-      MlbScraper::Player.all.each {|player|
-        if player.number.to_i == input.to_i
-          MlbScraper::Player.player_info(player.url)
-          get_player_info?
-        end
-      }
+    elsif player
+      MlbScraper::Scraper.player_info(player.url)
     else
-          p "I don't recognize that player's number!"
-          get_player_info?
+      p "I don't recognize that player's number!"
+      get_player_info?
     end
   end
 

@@ -47,4 +47,8 @@ class MlbScraper::Player
     #stats.each {|tr| puts "   #{tr}   ".chomp}
     #scrape and add the new values to attributes
   end
+
+  def self.find_by_number(number)
+    MlbScraper::Player.all.detect { |player| player.number.to_i == number.to_i }
+  end
 end
