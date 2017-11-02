@@ -3,5 +3,9 @@
 require "bundler/setup"
 require "mlb-scraper"
 
+def reload!
+  load './lib/mlb-scraper/player.rb'
+end
+
 require "irb"
 IRB.start
